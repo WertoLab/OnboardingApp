@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var coursesTableView: UITableView!
@@ -19,19 +20,30 @@ class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSou
         coursesTableView.delegate = self
         coursesTableView.dataSource = self
         coursesTableView.register(CourseCellTableViewCell.nib(), forCellReuseIdentifier: CourseCellTableViewCell.identifier)
-        coursesTableView.rowHeight = 150.0
+        coursesTableView.rowHeight = 190.0
         rootref = Database.database().reference()
         fetchCourses()
+        let ref = Database.database().reference().child("Users").child("0")
+
+        ref.updateChildValues([
+            "name":
+                "Andrew"
+        ])
+        
         //print("courses.countpppppppppoiudfghjkmnbvcxz")
         // Do any additional setup after loading the view.
         
         
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         return courses.count
     }
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+   
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: CourseCellTableViewCell.identifier ,for: indexPath) as! CourseCellTableViewCell
@@ -39,12 +51,27 @@ class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSou
         cell.layer.borderWidth = 0.15
         cell.titleText.text = courses[indexPath.row].courseTitle
         cell.durationText.text = courses[indexPath.row].duration
+        cell.CourseImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+        cell.CourseImage.contentMode = .scaleAspectFill
+        cell.CourseImage.layer.cornerRadius = 8.0
+        cell.CourseImage.clipsToBounds = true
         /*
         var image = UIImage(systemName: "star")
         cell.logo_of_doctor.image = image
         */
         //print(doctorsList.count)
+        print(courses[indexPath.row].ImageURL)
         //cell.layer.cornerRadius = 15.0
+        cell.CourseImage.kf.setImage(with: URL(string: courses[indexPath.row].ImageURL), placeholder: nil, options: nil, progressBlock: nil, completionHandler: { result in
+        switch result {
+            case .success(let value):
+                        print("Image: \(value.image). Got from: \(value.cacheType)")
+                        //print("ok")
+            case .failure(let error):
+                        //print("ok")
+                        print("Error: \(error)")
+            }
+        })
         return cell
     }
     
@@ -53,11 +80,15 @@ class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSou
         self.rootref.child("Courses").observe(.value, with: {(shapshot) in
             if let oShapshot = shapshot.children.allObjects as? [DataSnapshot]{
                 var counter:Int! = 0
+                self.courses = []
                 for snp in oShapshot{
                     var course = snp.value as? [String: String]
                     counter+=1
                     self.courses.append(Course(course!["duration"]!,course!["URL"]!,course!["title"]!,counter!))
                 }
+            }
+            DispatchQueue.main.async {
+                self.coursesTableView.reloadData()
             }
         })
     }

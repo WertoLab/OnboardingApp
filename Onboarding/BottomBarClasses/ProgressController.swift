@@ -21,6 +21,12 @@ class ProgressController: UIViewController,UITableViewDelegate,UITableViewDataSo
         fetchUsers()
        
     }
+    /*
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 15
+    }
+     */
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         return participants.count
@@ -41,14 +47,22 @@ class ProgressController: UIViewController,UITableViewDelegate,UITableViewDataSo
         participants = []
         self.rootref.child("Users").observe(.value, with: {(shapshot) in
             if let oShapshot = shapshot.children.allObjects as? [DataSnapshot]{
+                self.participants = []
                 for snp in oShapshot{
                     var user = snp.value as? [String: Any]
                     //["name":"Andrew","surname":"Lemanov","position":"trainee","points":0]
                     print(user!["position"]!)
+                    
                     self.participants.append(LeaderBoardItem(user!["name"]! as! String,user!["surname"]! as! String,user!["position"]! as! String,user!["points"]! as! Int,user!["id"]! as! String))
+                }
+                self.participants = self.participants.sorted(by: { $0.points > $1.points })
+                
+                DispatchQueue.main.async {
+                    self.leaderBoard.reloadData()
                 }
             }
         })
+        
     }
     static func randomString(len:Int) -> String {
          let charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

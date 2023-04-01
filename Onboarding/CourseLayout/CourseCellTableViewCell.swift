@@ -15,6 +15,9 @@ class CourseCellTableViewCell: UITableViewCell{
     static var identifier:String! = "coursecell"
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        layer.borderWidth = 10
+        titleText.contentMode = .right
         EnterCourse.addTarget(self, action: #selector(entercourseTap), for: .touchUpInside)
         // Initialization code
     }
