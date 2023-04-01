@@ -10,7 +10,7 @@ import Firebase
 class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var coursesTableView: UITableView!
-    var courses:[Course] = [Course("12","12","12")]
+    var courses:[Course] = [Course("12","12","12",0)]
     //let dictcourses: [String: String] = ["name": "Avengers", "addedByUser": "John"]
     var rootref: DatabaseReference!
     @IBOutlet weak var leaderBoard: UITableView!
@@ -21,14 +21,7 @@ class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSou
         coursesTableView.register(CourseCellTableViewCell.nib(), forCellReuseIdentifier: CourseCellTableViewCell.identifier)
         coursesTableView.rowHeight = 150.0
         rootref = Database.database().reference()
-        self.rootref.child("movies").child("Courses").observe(.value, with: {(shapshot) in
-            if let oShapshot = shapshot.children.allObjects as? [DataSnapshot]{
-                for snp in oShapshot{
-                    var course = snp.value as? [String: String]
-                    self.courses.append(Course(course!["duration"]!,course!["URL"]!,course!["title"]!))
-                }
-            }
-        })
+        fetchCourses()
         //print("courses.countpppppppppoiudfghjkmnbvcxz")
         // Do any additional setup after loading the view.
         
@@ -44,9 +37,8 @@ class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSou
         var cell = tableView.dequeueReusableCell(withIdentifier: CourseCellTableViewCell.identifier ,for: indexPath) as! CourseCellTableViewCell
         cell.layer.cornerRadius = 10.0
         cell.layer.borderWidth = 0.15
-        cell.title = courses[indexPath.row].courseTitle
-        cell.duration = courses[indexPath.row].duration
-        print("ok")
+        cell.titleText.text = courses[indexPath.row].courseTitle
+        cell.durationText.text = courses[indexPath.row].duration
         /*
         var image = UIImage(systemName: "star")
         cell.logo_of_doctor.image = image
@@ -55,4 +47,20 @@ class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //cell.layer.cornerRadius = 15.0
         return cell
     }
+    
+    func fetchCourses(){
+        courses = []
+        self.rootref.child("Courses").observe(.value, with: {(shapshot) in
+            if let oShapshot = shapshot.children.allObjects as? [DataSnapshot]{
+                var counter:Int! = 0
+                for snp in oShapshot{
+                    var course = snp.value as? [String: String]
+                    counter+=1
+                    self.courses.append(Course(course!["duration"]!,course!["URL"]!,course!["title"]!,counter!))
+                }
+            }
+        })
+    }
+    
+   
 }

@@ -16,25 +16,28 @@ class ViewController: UIViewController {
         
         
         rootref = Database.database().reference()
-        let ref = rootref.child("movies")
-        ref.child("user_id").setValue(123456)
-        ref.child("Courses").setValue([["title":"13","duration":"12","URL":"12"],["title":"13","duration":"12","URL":"12"]])
+        
+        rootref.child("user_id").setValue(123456)
+        rootref.child("Courses").setValue([["title":"13","duration":"12","URL":"12"],["title":"13","duration":"12","URL":"12"]])
+        rootref.child("Users").setValue([["name":"Andrew","surname":"Lemanov","position":"trainee","points":0,"id":ProgressController.randomString(len: 15)],["name":"Vasiliy","surname":"Pupkin","position":"trainee","points":10,"id":ProgressController.randomString(len: 15)]])
         // Do any additional setup after loading the view.
         observer()
         
     }
+    
     func observer(){
-        self.rootref.child("movies").child("Courses").observe(.value, with: {(shapshot) in
+        self.rootref.child("Courses").observe(.value, with: {(shapshot) in
             if let oShapshot = shapshot.children.allObjects as? [DataSnapshot]{
                 for snp in oShapshot{
-                    var a = snp.value as? [String: String]
-                    self.all.append(a!)
-                    print(a!["title"])
+                    //var a = snp.value as? [String: String]
+                    //self.all.append(a!)
+                    //print(a!["title"])
                 }
             }
         })
         
     }
+     
     override func viewDidAppear(_ animated: Bool) {
         var bottomBar = UITabBarController();
         var progress = storyboard?.instantiateViewController(withIdentifier: "progressscreen") as! ProgressController;

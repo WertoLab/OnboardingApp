@@ -8,8 +8,6 @@
 import UIKit
 
 class CourseCellTableViewCell: UITableViewCell{
-    var title:String! = ""
-    var duration:String! = ""
     @IBOutlet weak var EnterCourse: UIButton!
     @IBOutlet weak var durationText: UILabel!
     @IBOutlet weak var CourseImage: UIImageView!
@@ -17,11 +15,15 @@ class CourseCellTableViewCell: UITableViewCell{
     static var identifier:String! = "coursecell"
     override func awakeFromNib() {
         super.awakeFromNib()
+        EnterCourse.addTarget(self, action: #selector(entercourseTap), for: .touchUpInside)
         // Initialization code
     }
     
     static func nib() -> UINib{
         return UINib(nibName: "CourseCellTableViewCell", bundle: nil)
+    }
+    @objc func entercourseTap(sender:UIButton!){
+            print("ok")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
