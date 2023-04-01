@@ -8,11 +8,11 @@
 import UIKit
 
 class LeaderBoardCellTableViewCell: UITableViewCell {
-     var name:String! = ""
-     var surname:String! = ""
-     var points:Int! = -1
-     var position:String! = ""
-     static var identifier:String! = "leaderboardcell"
+     
+    @IBOutlet weak var name_surname: UILabel!
+    @IBOutlet weak var positionText: UILabel!
+    @IBOutlet weak var pointsText: UILabel!
+    static var identifier:String! = "leaderboardcell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
