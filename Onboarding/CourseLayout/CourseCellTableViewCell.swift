@@ -10,6 +10,10 @@ import UIKit
 class CourseCellTableViewCell: UITableViewCell{
     var title:String! = ""
     var duration:String! = ""
+    @IBOutlet weak var EnterCourse: UIButton!
+    @IBOutlet weak var durationText: UILabel!
+    @IBOutlet weak var CourseImage: UIImageView!
+    @IBOutlet weak var titleText: UILabel!
     static var identifier:String! = "coursecell"
     override func awakeFromNib() {
         super.awakeFromNib()

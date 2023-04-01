@@ -6,13 +6,13 @@
 //
 
 import UIKit
-
+import Firebase
 class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var coursesTableView: UITableView!
     var courses:[Course] = [Course("12","12","12")]
     //let dictcourses: [String: String] = ["name": "Avengers", "addedByUser": "John"]
-    
+    var rootref: DatabaseReference!
     @IBOutlet weak var leaderBoard: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,15 @@ class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSou
         coursesTableView.dataSource = self
         coursesTableView.register(CourseCellTableViewCell.nib(), forCellReuseIdentifier: CourseCellTableViewCell.identifier)
         coursesTableView.rowHeight = 150.0
+        rootref = Database.database().reference()
+        self.rootref.child("movies").child("Courses").observe(.value, with: {(shapshot) in
+            if let oShapshot = shapshot.children.allObjects as? [DataSnapshot]{
+                for snp in oShapshot{
+                    var course = snp.value as? [String: String]
+                    self.courses.append(Course(course!["duration"]!,course!["URL"]!,course!["title"]!))
+                }
+            }
+        })
         //print("courses.countpppppppppoiudfghjkmnbvcxz")
         // Do any additional setup after loading the view.
     }
@@ -27,6 +36,7 @@ class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         return courses.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: CourseCellTableViewCell.identifier ,for: indexPath) as! CourseCellTableViewCell
