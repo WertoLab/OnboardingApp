@@ -11,6 +11,7 @@ class CoursesController: UIViewController,UITableViewDelegate,UITableViewDataSou
 
     @IBOutlet weak var coursesTableView: UITableView!
     var courses:[Course] = [Course("12","12","12")]
+    //let dictcourses: [String: String] = ["name": "Avengers", "addedByUser": "John"]
     
     @IBOutlet weak var leaderBoard: UITableView!
     override func viewDidLoad() {

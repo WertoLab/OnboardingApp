@@ -15,7 +15,12 @@ class ViewController: UIViewController {
         rootref = Database.database().reference()
         let ref = rootref.child("movies")
         ref.child("user_id").setValue(123456)
+        ref.child("Courses").setValue([["title":"13","duration":"12","URL":"12"],["title":"13","duration":"12","URL":"12"]])
         // Do any additional setup after loading the view.
+        
+    }
+    func observer(){
+        self.rootref.child("")
     }
     override func viewDidAppear(_ animated: Bool) {
         var bottomBar = UITabBarController();
