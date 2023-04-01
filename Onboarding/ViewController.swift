@@ -23,6 +23,9 @@ class ViewController: UIViewController {
     }
     func observer(){
         self.rootref.child("")
+        
+        
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         var bottomBar = UITabBarController();
