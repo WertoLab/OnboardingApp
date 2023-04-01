@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         rootref = Database.database().reference()
         let ref = rootref.child("movies")
         ref.child("user_id").setValue(123456)
