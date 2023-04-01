@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32EFB09929D8B95000B66925 /* TestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EFB09829D8B95000B66925 /* TestsController.swift */; };
+		32EFB0A129D8E90B00B66925 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EFB0A029D8E90B00B66925 /* Question.swift */; };
+		32EFB0A329D8E98200B66925 /* QuizFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EFB0A229D8E98200B66925 /* QuizFiles.swift */; };
+		32EFB0A529D8EBD700B66925 /* QuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EFB0A429D8EBD700B66925 /* QuizController.swift */; };
 		551468AD29D81F440013584A /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551468AC29D81F440013584A /* ProgressController.swift */; };
 		551468AF29D81F5D0013584A /* CoursesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551468AE29D81F5D0013584A /* CoursesController.swift */; };
-		551468B129D8208C0013584A /* TestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551468B029D8208C0013584A /* TestsController.swift */; };
 		551468B629D829390013584A /* CourseCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551468B429D829390013584A /* CourseCellTableViewCell.swift */; };
 		551468B729D829390013584A /* CourseCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551468B529D829390013584A /* CourseCellTableViewCell.xib */; };
 		551468BA29D82C740013584A /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551468B929D82C740013584A /* Course.swift */; };
@@ -27,9 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32EFB09829D8B95000B66925 /* TestsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsController.swift; sourceTree = "<group>"; };
+		32EFB0A029D8E90B00B66925 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		32EFB0A229D8E98200B66925 /* QuizFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFiles.swift; sourceTree = "<group>"; };
+		32EFB0A429D8EBD700B66925 /* QuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizController.swift; sourceTree = "<group>"; };
 		551468AC29D81F440013584A /* ProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
 		551468AE29D81F5D0013584A /* CoursesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesController.swift; sourceTree = "<group>"; };
-		551468B029D8208C0013584A /* TestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsController.swift; sourceTree = "<group>"; };
 		551468B429D829390013584A /* CourseCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCellTableViewCell.swift; sourceTree = "<group>"; };
 		551468B529D829390013584A /* CourseCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseCellTableViewCell.xib; sourceTree = "<group>"; };
 		551468B929D82C740013584A /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
@@ -76,7 +82,8 @@
 			children = (
 				551468AC29D81F440013584A /* ProgressController.swift */,
 				551468AE29D81F5D0013584A /* CoursesController.swift */,
-				551468B029D8208C0013584A /* TestsController.swift */,
+				32EFB09829D8B95000B66925 /* TestsController.swift */,
+				32EFB0A429D8EBD700B66925 /* QuizController.swift */,
 			);
 			path = BottomBarClasses;
 			sourceTree = "<group>";
@@ -95,6 +102,8 @@
 			children = (
 				551468B929D82C740013584A /* Course.swift */,
 				551468C229D842F50013584A /* LeaderBoardItem.swift */,
+				32EFB0A029D8E90B00B66925 /* Question.swift */,
+				32EFB0A229D8E98200B66925 /* QuizFiles.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,14 +281,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				551468BA29D82C740013584A /* Course.swift in Sources */,
+				32EFB0A529D8EBD700B66925 /* QuizController.swift in Sources */,
 				551468BE29D841960013584A /* LeaderBoardCellTableViewCell.swift in Sources */,
 				551468AD29D81F440013584A /* ProgressController.swift in Sources */,
 				55E4BC8A29D7FC4E004327D3 /* ViewController.swift in Sources */,
 				551468B629D829390013584A /* CourseCellTableViewCell.swift in Sources */,
 				55E4BC8629D7FC4E004327D3 /* AppDelegate.swift in Sources */,
+				32EFB0A329D8E98200B66925 /* QuizFiles.swift in Sources */,
 				551468C329D842F50013584A /* LeaderBoardItem.swift in Sources */,
-				551468B129D8208C0013584A /* TestsController.swift in Sources */,
 				55E4BC8829D7FC4E004327D3 /* SceneDelegate.swift in Sources */,
+				32EFB09929D8B95000B66925 /* TestsController.swift in Sources */,
+				32EFB0A129D8E90B00B66925 /* Question.swift in Sources */,
 				551468AF29D81F5D0013584A /* CoursesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
