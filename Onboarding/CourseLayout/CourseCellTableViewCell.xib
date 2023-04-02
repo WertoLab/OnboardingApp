@@ -29,7 +29,7 @@
                         <size key="shadowOffset" width="1" height="-1"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1SM-oB-6vG">
-                        <rect key="frame" x="277" y="136" width="90" height="31"/>
+                        <rect key="frame" x="265" y="136" width="129" height="31"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <buttonConfiguration key="configuration" style="filled" title="Начать">
                             <color key="baseBackgroundColor" systemColor="labelColor"/>

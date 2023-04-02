@@ -10,7 +10,7 @@ import Firebase
 class ViewController: UIViewController {
     var rootref: DatabaseReference!
     var all:[[String:String]]! = []
-    static var user_id:String! = "Kh8hEt8e6Z"
+    static var user_id:String! = "ZpYAh7KPMe"
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,12 +19,14 @@ class ViewController: UIViewController {
         rootref = Database.database().reference()
         /*
         rootref.child("user_id").setValue(123456)
-        rootref.child("Courses").child("2").setValue(["title":"13","duration":"12","URL":"12"])
-        rootref.child("Courses").child("3").setValue(["title":"13","duration":"12","URL":"12"])
-        rootref.child("Courses").child("4").setValue(["title":"13","duration":"12","URL":"12"])
-        rootref.child("Courses").child("5").setValue(["title":"13","duration":"12","URL":"12"])
+        rootref.child(user_id).child("0").setValue(["isEntered":"no"])
+        rootref.child(user_id).child("1").setValue(["isEntered":"no"])
+        rootref.child(user_id).child("2").setValue(["isEntered":"no"])
+        rootref.child(user_id).child("3").setValue(["isEntered":"no"])
+        rootref.child(user_id).child("4").setValue(["isEntered":"no"])
+        rootref.child(user_id).child("5").setValue(["isEntered":"no"])
          */
-        /*
+                 /*
         rootref.child("Courses").setValue([["title":"13","duration":"12","URL":"12"],["title":"13","duration":"12","URL":"12"]])
          */
         /*

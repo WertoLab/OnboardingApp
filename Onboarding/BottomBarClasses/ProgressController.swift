@@ -51,10 +51,12 @@ class ProgressController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 for snp in oShapshot{
                     var user = snp.value as? [String: Any]
                     //["name":"Andrew","surname":"Lemanov","position":"trainee","points":0]
+                    
                     print(user!["position"]!)
                     
                     self.participants.append(LeaderBoardItem(user!["name"]! as! String,user!["surname"]! as! String,user!["position"]! as! String,user!["points"]! as! Int,user!["id"]! as! String))
                 }
+                
                 self.participants = self.participants.sorted(by: { $0.points > $1.points })
                 
                 DispatchQueue.main.async {
