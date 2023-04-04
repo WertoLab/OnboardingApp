@@ -1,4 +1,4 @@
-OnboardingApp
+#OnboardingApp
 
 Данное приложение было реализовано в рамках хакатона EESTech Challenge
 Наша команда заняла 15 место.
