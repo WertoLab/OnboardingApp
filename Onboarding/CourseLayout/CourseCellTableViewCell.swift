@@ -102,7 +102,7 @@ class CourseCellTableViewCell: UITableViewCell{
                 }
                 self.rootref.child("Users").child(String(self.index_w)).updateChildValues([
                     "points":
-                      200])
+                      20])
             }
         })
         
